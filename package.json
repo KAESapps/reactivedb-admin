@@ -1,0 +1,28 @@
+{
+  "name": "reactivedb-admin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "brace": "0.11.1",
+    "format-json": "1.0.3",
+    "json5": "0.5.1",
+    "lodash": "4.17.5",
+    "material-colors": "1.2.5",
+    "reaks": "kaesapps/reaks#cab348e",
+    "uiks": "kaesapps/uiks#a627f79"
+  },
+  "peerDependencies": {
+    "kobs": "kaesapps/kobs#6edb465",
+    "reactivedb": "kaesapps/reactivedb#b156e81"
+  },
+  "devDependencies": {
+    "eslint": "4.18.1"
+  },
+  "author": "",
+  "license": "ISC",
+  "prettier": {
+    "trailingComma": "es5",
+    "semi": false
+  }
+}
