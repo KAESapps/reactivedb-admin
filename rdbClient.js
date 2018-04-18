@@ -1,4 +1,5 @@
 const reactivedbClient = require("reactivedb/client")
+const reactivedbClientRaw = require("reactivedb/client-raw")
 const assign = require("lodash/assign")
 
 module.exports = ({ config, user, password }) => {
@@ -14,7 +15,7 @@ module.exports = ({ config, user, password }) => {
           {
             onDisconnect: cb => ws.addEventListener("close", cb),
           },
-          reactivedbClient(ws)
+          reactivedbClient(reactivedbClientRaw(ws))
         )
       )
     })

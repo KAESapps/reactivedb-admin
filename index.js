@@ -34,6 +34,7 @@ const dynamicQuery = require("uiks/reactivedb/dynamicQuery")
 const displayIf = require("uiks/reaks/displayIf")
 const loadingSwitch = require("uiks/reaks/loadingSwitch")
 const button = require("uiks/reaks-material/button")
+const commandButton = require("uiks/reaks-material/commandButton")
 const label = require("uiks/reaks/label")
 const size = require("uiks/reaks/size")
 
@@ -79,9 +80,9 @@ const app = assignCtx(
             button("Exécuter la requête", ctx => () => {
               ctx.validatedQuery(json5.parse(ctx.queryEditorValue))
             }),
-            button("Exécuter comme patch", ctx => () => {
+            commandButton("Exécuter comme patch", ctx => () =>
               ctx.patch(json5.parse(ctx.queryEditorValue))
-            }),
+            ),
           ])
         ),
       ],
