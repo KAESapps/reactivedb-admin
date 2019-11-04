@@ -1,5 +1,5 @@
 const reactivedbClient = require("reactivedb/client")
-const reactivedbClientRaw = require("reactivedb/client-raw")
+const reactivedbClientRaw = require("reactivedb/client-raw-ws")
 const assign = require("lodash/assign")
 
 module.exports = ({ config, user, password }) => {
