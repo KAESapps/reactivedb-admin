@@ -8,12 +8,10 @@
     "format-json": "1.0.3",
     "json5": "2.2.0",
     "lodash": "4.17.21",
-    "material-colors": "1.2.6",
-    "reaks": "kaesapps/reaks#8f935c62465ca8ff44e323e6fab9b39ae77761b0",
-    "uiks": "kaesapps/uiks#c584ddcf3e83179f2a6ea44bd2b028daa87e7ad1"
+    "material-colors": "1.2.6"
   },
   "devDependencies": {
-    "eslint": "7.28.0"
+    "eslint": "8.3.0"
   },
   "author": "",
   "license": "ISC",
