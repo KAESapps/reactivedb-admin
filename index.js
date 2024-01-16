@@ -44,8 +44,8 @@ require("brace/mode/javascript")
 const child = require("reaks/child")
 const text = require("reaks/text")
 
-const jsEditor = ctx => {
-  return domNode => {
+const jsEditor = (ctx) => {
+  return (domNode) => {
     var editor = ace.edit(domNode)
     editor.getSession().setMode("ace/mode/javascript")
     editor.setFontSize(16)
@@ -58,7 +58,7 @@ const jsEditor = ctx => {
   }
 }
 
-const codeDisplayer = ctx =>
+const codeDisplayer = (ctx) =>
   child(text(ctx.value), () => document.createElement("pre"))
 
 const app = assignCtx(
@@ -77,11 +77,12 @@ const app = assignCtx(
         backgroundColor(
           "#EEE",
           hPile([
-            button("Exécuter la requête", ctx => () => {
+            button("Exécuter la requête", (ctx) => () => {
               ctx.validatedQuery(json5.parse(ctx.queryEditorValue))
             }),
-            commandButton("Exécuter comme patch", ctx => () =>
-              ctx.patch(json5.parse(ctx.queryEditorValue))
+            commandButton(
+              "Exécuter comme patch",
+              (ctx) => () => ctx.patch(json5.parse(ctx.queryEditorValue))
             ),
           ])
         ),
@@ -89,7 +90,7 @@ const app = assignCtx(
       displayIf(
         "validatedQuery",
         value(
-          dynamicQuery(ctx => ctx.validatedQuery()),
+          dynamicQuery((ctx) => ctx.validatedQuery()),
 
           loadingSwitch({
             loaded: scroll(formatValue(formatJson, codeDisplayer)),
@@ -101,24 +102,24 @@ const app = assignCtx(
   )
 )
 
-const login = config =>
+const login = (config) =>
   command(
-    ctx => () =>
+    (ctx) => () =>
       rdbClient({
         config,
-        user: ctx.username(),
+        username: ctx.username(),
         password: ctx.password(),
       }),
     ctxAssign(
-      ctx => {
+      (ctx) => {
         // dev!!
-        if (process.env.NODE_ENV === "dev") {
-          ctx.username("admin")
-          ctx.password("admin")
-          ctx.command.trigger()
-        }
+        // if (process.env.NODE_ENV === "dev") {
+        //   ctx.username("")
+        //   ctx.password("")
+        //   ctx.command.trigger()
+        // }
       },
-      swap(ctx => () => {
+      swap((ctx) => () => {
         if (ctx.command.status() === "success") {
           return ctxAssign(ctx.command.result, app)
         } else {
@@ -128,13 +129,13 @@ const login = config =>
     )
   )
 
-module.exports = config =>
+module.exports = (config) =>
   renderFullscreen(
     materialRoot(
-      { getFileUrl: () => filename => "assets/" + filename },
+      { getFileUrl: () => (filename) => "assets/" + filename },
       assignObservable(
         {
-          username: "",
+          username: "admin",
           password: "",
         },
         login(config)
